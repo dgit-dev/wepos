@@ -106,7 +106,7 @@ export default {
         return {
             showResults: false,
             showVariationModal: false,
-            mode: 'scan',
+            mode: 'product',
             serachInput: '',
             searchableProduct: [],
             selectedVariationProduct: {},
@@ -253,11 +253,11 @@ export default {
                         if ( product.id.toString().indexOf( this.serachInput ) != -1 ) {
                             return true;
                         } else if ( product.name.toString().toLowerCase().indexOf( this.serachInput.toLowerCase() ) != -1 ) {
-                            return true
+                            return true;
                         } else if ( product.sku.indexOf( this.serachInput ) != -1 ) {
-                            return true
-                        } else if(productAttributesContainsOptionString(product, e.target.value)){
-                            return true
+                            return true;
+                        } else if(this.productAttributesContainsOptionString(product, e.target.value)){
+                            return true;
                         } else {
                             return false;
                         }
@@ -267,6 +267,8 @@ export default {
         },
 
         productAttributesContainsOptionString(product, searchString){
+
+            console.log(product);
             if(!product){
                 return false;
             }
@@ -284,10 +286,10 @@ export default {
             var foundAttribute = false;
 
             attributes.forEach(attribute => {
-                if(attribute.options && attributes.options.length > 0){
-                    attributes.options.forEach(option => {
+                if(attribute.options && attribute.options.length > 0){
+                    attribute.options.forEach(option => {
                         if(option.includes(searchString)){
-                            foundAttribute = true;
+                            foundAttribute = attribute;
                         }
                     })
                 }

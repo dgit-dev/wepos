@@ -37,7 +37,7 @@ class Admin {
                 [
                     'title' => __( 'View POS', 'wepos' ),
                     'cap' => $capability,
-                    'url' => site_url() . '/wepos/#'
+                    'url' => home_url() . '/wepos/#'
                 ],
             ], $slug, $capability, $hook );
 
