@@ -256,12 +256,44 @@ export default {
                             return true
                         } else if ( product.sku.indexOf( this.serachInput ) != -1 ) {
                             return true
+                        } else if(productAttributesContainsOptionString(product, e.target.value)){
+                            return true
                         } else {
                             return false;
                         }
                     } );
                 }
             }
+        },
+
+        productAttributesContainsOptionString(product, searchString){
+            if(!product){
+                return false;
+            }
+
+            if(!product.attributes){
+                return false;
+            }
+
+            var attributes = product.attributes;
+
+            if(attributes.length < 1){
+                return false;
+            }
+
+            var foundAttribute = false;
+
+            attributes.forEach(attribute => {
+                if(attribute.options && attributes.options.length > 0){
+                    attributes.options.forEach(option => {
+                        if(option.includes(searchString)){
+                            foundAttribute = true;
+                        }
+                    })
+                }
+            });
+
+            return foundAttribute;
         },
 
         selectVariation( product ) {

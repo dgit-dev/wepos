@@ -1,0 +1,17 @@
+{
+  "name": "dgit-dev/wepos",
+  "description": "wePOS plugin for Wordpress",
+  "homepage": "https://github.com/dgit-dev/wepos",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "authors": [
+    {
+      "name": "dgit",
+      "homepage": "https://dgitally.co.uk"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": "^7.4"
+  }
+}
